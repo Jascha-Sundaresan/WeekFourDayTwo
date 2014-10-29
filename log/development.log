@@ -4614,3 +4614,1794 @@ Processing by CatsController#show as HTML
   [1m[35mCatRentalRequest Load (0.5ms)[0m  SELECT "cat_rental_requests".* FROM "cat_rental_requests"  WHERE "cat_rental_requests"."cat_id" = $1  [["cat_id", 1]]
   Rendered cats/show.html.erb within layouts/application (0.3ms)
 Completed 200 OK in 50ms (Views: 46.6ms | ActiveRecord: 0.7ms)
+  [1m[36m (18.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCats (20141028172736)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "cats" ("id" serial primary key, "birth_date" date NOT NULL, "color" character varying(255) NOT NULL, "name" character varying(255) NOT NULL, "sex" character varying(255) NOT NULL, "description" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141028172736"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCatRentalRequests (20141028211913)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "cat_rental_requests" ("id" serial primary key, "cat_id" integer NOT NULL, "status" character varying(255) DEFAULT 'PENDING' NOT NULL, "start_date" date NOT NULL, "end_date" date NOT NULL, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141028211913"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20141029175532)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "user_name" character varying(255), "password_digest" character varying(255), "session_token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141029175532"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20141029175532)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20141029175532)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.6ms)[0m  DROP TABLE "users"
+  [1m[36mSQL (0.9ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20141029175532'[0m
+  [1m[35m (2.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20141029175532)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (21.6ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "user_name" character varying(255), "password_digest" character varying(255), "session_token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141029175532"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20141029175532)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.8ms)[0m  DROP INDEX "index_users_on_session_token"
+  [1m[36m (1.4ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20141029175532'
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20141029175532)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (19.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "user_name" character varying(255), "password_digest" character varying(255), "session_token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_user_name" ON "users"  ("user_name")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141029175532"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 13:56:45 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 624ms (Views: 603.2ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 13:57:12 -0700
+Processing by UsersController#new as HTML
+  Rendered layouts/_errors.html.erb (0.7ms)
+  Rendered users/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 120ms (Views: 119.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 13:57:41 -0700
+Processing by UsersController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 67ms (Views: 66.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session/new" for 127.0.0.1 at 2014-10-29 13:58:01 -0700
+
+ActionController::RoutingError (No route matches [POST] "/session/new"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (37.8ms)
+
+
+Started POST "/session/new" for 127.0.0.1 at 2014-10-29 13:58:31 -0700
+
+ActionController::RoutingError (No route matches [POST] "/session/new"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (25.4ms)
+
+
+Started POST "/session/new" for 127.0.0.1 at 2014-10-29 14:00:48 -0700
+
+ActionController::RoutingError (No route matches [POST] "/session/new"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (27.8ms)
+
+
+Started POST "/session/new" for 127.0.0.1 at 2014-10-29 14:01:11 -0700
+
+ActionController::RoutingError (No route matches [POST] "/session/new"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (26.1ms)
+
+
+Started POST "/session/new" for 127.0.0.1 at 2014-10-29 14:01:21 -0700
+
+ActionController::RoutingError (No route matches [POST] "/session/new"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (23.2ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:01:58 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.6ms)
+  Rendered sessions/new.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 123ms
+
+ActionView::Template::Error (undefined method `user_name' for nil:NilClass):
+     8: </head>
+     9: <body>
+    10: 
+    11: <% if @user.user_name %>
+    12:   <%= @user.user_name %><br>
+    13:   <%= button_to "Click to logout", session_url, method: :delete %>
+    14: <% else %>
+  app/views/layouts/application.html.erb:11:in `_app_views_layouts_application_html_erb___1712259110098543705_70247408717900'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.8ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:03:44 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.2ms)
+  Rendered sessions/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 75ms (Views: 64.9ms | ActiveRecord: 3.6ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:03:48 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:03:48 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 107ms (Views: 105.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:04:16 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 67ms (Views: 66.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:04:27 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 68ms (Views: 67.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:04:29 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 67ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/new" for 127.0.0.1 at 2014-10-29 14:05:12 -0700
+
+ActionController::RoutingError (No route matches [GET] "/user/new"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (31.6ms)
+
+
+Started GET "/user/new" for 127.0.0.1 at 2014-10-29 14:05:17 -0700
+
+ActionController::RoutingError (No route matches [GET] "/user/new"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.8ms)
+
+
+Started GET "/user/new" for 127.0.0.1 at 2014-10-29 14:06:07 -0700
+
+ActionController::RoutingError (No route matches [GET] "/user/new"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:06:13 -0700
+Processing by UsersController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 67ms (Views: 66.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:06:20 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 108ms (Views: 107.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:06:25 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 74ms (Views: 73.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:06:28 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 77ms (Views: 76.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:06:31 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 75ms (Views: 74.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:06:34 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 70ms (Views: 68.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:06:52 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bo", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (23.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bo' LIMIT 1
+Completed 200 OK in 79ms (Views: 0.2ms | ActiveRecord: 23.3ms)
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users"
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:10:44 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bo' LIMIT 1[0m
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 2.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:11:30 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bo", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bo' LIMIT 1
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:13:06 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bo' LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:13:47 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bo", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bo' LIMIT 1
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:14:15 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bo", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bo' LIMIT 1
+Completed 200 OK in 18ms (Views: 0.1ms | ActiveRecord: 3.4ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:16:38 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bo' LIMIT 1[0m
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:17:51 -0700
+Processing by UsersController#new as HTML
+  Rendered layouts/_errors.html.erb (0.5ms)
+  Rendered users/new.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 113ms
+
+ActionView::Template::Error (undefined method `user_name' for nil:NilClass):
+     9: <body>
+    10: 
+    11: <% if @user.nil? %>
+    12:   <%= @user.user_name %><br>
+    13:   <%= button_to "Click to logout", session_url, method: :delete %>
+    14: <% else %>
+    15:   <%= button_to "Click to sign in", new_session_url, method: :get %>
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1364187177220913208_70169832248800'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:17:56 -0700
+Processing by UsersController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 69ms
+
+ActionView::Template::Error (undefined method `user_name' for nil:NilClass):
+     9: <body>
+    10: 
+    11: <% if @user.nil? %>
+    12:   <%= @user.user_name %><br>
+    13:   <%= button_to "Click to logout", session_url, method: :delete %>
+    14: <% else %>
+    15:   <%= button_to "Click to sign in", new_session_url, method: :get %>
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1364187177220913208_70169832248800'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (10.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:18:17 -0700
+Processing by UsersController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 64ms (Views: 64.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 14:18:27 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bo", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-10-29 21:18:27.646929"], ["password_digest", "$2a$10$6Y4/IkzN9gTWiSYXm7YnsOLXy7UqXsvpif.nQ4KKhCFNhnwueQFgG"], ["session_token", "3hISDXwAVwCyVp6eD020ZQ"], ["updated_at", "2014-10-29 21:18:27.646929"], ["user_name", "Bo"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 500 Internal Server Error in 109ms
+
+NameError (undefined local variable or method `user' for #<UsersController:0x007fa361239770>):
+  app/controllers/users_controller.rb:9:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.3ms)
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 14:19:19 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bob", "password"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-10-29 21:19:19.396665"], ["password_digest", "$2a$10$IHG6sMqZYRB8WsRhodxewORDhCwSe9pSH649uiUHkE4odnW2Ut0Pi"], ["session_token", "1evJALzofpFlFdKUyzqeiA"], ["updated_at", "2014-10-29 21:19:19.396665"], ["user_name", "Bob"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 86ms
+
+NoMethodError (undefined method `login!' for #<User:0x007fa3626ac338>):
+  app/controllers/users_controller.rb:9:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 14:21:32 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bob", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-10-29 21:21:32.363244"], ["password_digest", "$2a$10$.p1JMquS7DhGu1wcy5.Ob.ye2efmCNqhLX6fwR3eZKHU2h0RJ/IBm"], ["session_token", "HMLQ9WlEoLCskaRBRavF9Q"], ["updated_at", "2014-10-29 21:21:32.363244"], ["user_name", "Bob"]]
+PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_user_name"
+DETAIL:  Key (user_name)=(Bob) already exists.
+: INSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 87ms
+
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_user_name"
+DETAIL:  Key (user_name)=(Bob) already exists.
+: INSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"):
+  app/controllers/users_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 14:22:15 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-10-29 21:22:15.674940"], ["password_digest", "$2a$10$xupdvMhlHLx3IlPnLs3HFOrd24d6pDiWinh5kz2mcPo2wMQ/FqDnK"], ["session_token", "BMJUJtUQ5QpU6TdAz-SE2g"], ["updated_at", "2014-10-29 21:22:15.674940"], ["user_name", "Bobby"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 92ms
+
+NameError (undefined local variable or method `user' for #<UsersController:0x007fa363810930>):
+  app/controllers/users_controller.rb:10:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 14:23:00 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-10-29 21:23:00.590436"], ["password_digest", "$2a$10$3wDaxJUc4zRIBAprqqwqk.X9.N8QIh2ID7vfXnuGldC8ZTptiLCau"], ["session_token", "tpg_7CudgK4RFn1HlhB_WA"], ["updated_at", "2014-10-29 21:23:00.590436"], ["user_name", "Bobby"]]
+PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_user_name"
+DETAIL:  Key (user_name)=(Bobby) already exists.
+: INSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 87ms
+
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_user_name"
+DETAIL:  Key (user_name)=(Bobby) already exists.
+: INSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"):
+  app/controllers/users_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 14:23:03 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-10-29 21:23:03.870033"], ["password_digest", "$2a$10$NCNXzI3u6LXV3OLVi2Fj0uP73o6jRJGW4nyOKXIW7WbHnh3GxZsUi"], ["session_token", "K_X7Cdj1CZqR5x-7Seqyyw"], ["updated_at", "2014-10-29 21:23:03.870033"], ["user_name", "Bobby"]]
+PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_user_name"
+DETAIL:  Key (user_name)=(Bobby) already exists.
+: INSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 78ms
+
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_user_name"
+DETAIL:  Key (user_name)=(Bobby) already exists.
+: INSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"):
+  app/controllers/users_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.7ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users"
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 14:23:34 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobbb", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-10-29 21:23:35.003143"], ["password_digest", "$2a$10$dlOxNDrKhufi3HNqxrDac.POQLihdZRkdrssSyjRxvWIydys0oO7i"], ["session_token", "parWcPXrRIY-pIw8WsBSrg"], ["updated_at", "2014-10-29 21:23:35.003143"], ["user_name", "Bobbb"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 79ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:23:35 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (12.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 88ms (Views: 71.0ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:23:53 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 135ms (Views: 134.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:23:58 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `is_password?' for nil:NilClass):
+  app/models/user.rb:20:in `is_password?'
+  app/models/user.rb:11:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:24:06 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `is_password?' for nil:NilClass):
+  app/models/user.rb:20:in `is_password?'
+  app/models/user.rb:11:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.7ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:24:43 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bo", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bo' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `is_password?' for nil:NilClass):
+  app/models/user.rb:20:in `is_password?'
+  app/models/user.rb:11:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.3ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:26:15 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1[0m
+Completed 500 Internal Server Error in 14ms
+
+NoMethodError (undefined method `password_digest' for nil:NilClass):
+  app/models/user.rb:20:in `is_password?'
+  app/models/user.rb:11:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.1ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:27:48 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1
+Completed 500 Internal Server Error in 12ms
+
+NoMethodError (undefined method `is_password?' for "$2a$10$xupdvMhlHLx3IlPnLs3HFOrd24d6pDiWinh5kz2mcPo2wMQ/FqDnK":String):
+  app/models/user.rb:20:in `is_password?'
+  app/models/user.rb:11:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.5ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:27:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1[0m
+Completed 500 Internal Server Error in 12ms
+
+NoMethodError (undefined method `is_password?' for "$2a$10$xupdvMhlHLx3IlPnLs3HFOrd24d6pDiWinh5kz2mcPo2wMQ/FqDnK":String):
+  app/models/user.rb:20:in `is_password?'
+  app/models/user.rb:11:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.5ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:28:00 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `is_password?' for "$2a$10$xupdvMhlHLx3IlPnLs3HFOrd24d6pDiWinh5kz2mcPo2wMQ/FqDnK":String):
+  app/models/user.rb:20:in `is_password?'
+  app/models/user.rb:11:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.6ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:33:20 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1[0m
+Completed 500 Internal Server Error in 84ms
+
+NoMethodError (undefined method `login!' for #<User:0x007fa362be9e90>):
+  app/controllers/sessions_controller.rb:16:in `create'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.7ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:34:04 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 87ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:34:04 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 73ms (Views: 69.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 14:34:18 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobbby", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-10-29 21:34:18.912335"], ["password_digest", "$2a$10$9aGmahyDpo8xQ0woxx7qe.1ZRwl3aA9XjLIugfymTHOh05Cgkxaf6"], ["session_token", "y-pl6CGxvvfNDd_sNSX0_g"], ["updated_at", "2014-10-29 21:34:18.912335"], ["user_name", "Bobbby"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 82ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:34:18 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.6ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 84ms (Views: 82.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 14:36:48 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Boss", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-10-29 21:36:48.719065"], ["password_digest", "$2a$10$ga0Ys6B6p1xPEKXM2UtTB.c6saz6wVim1opxw3QOSGVA4O7v/Nmva"], ["session_token", "y34_hbmYcvZjHZE0dExgfA"], ["updated_at", "2014-10-29 21:36:48.719065"], ["user_name", "Boss"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 81ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:36:48 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 70ms (Views: 69.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:37:41 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.3ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'y34_hbmYcvZjHZE0dExgfA' LIMIT 1[0m
+Completed 200 OK in 79ms (Views: 77.4ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:37:50 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'y34_hbmYcvZjHZE0dExgfA' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 9  [["session_token", "A-gXuIFfxVWxW3CGICUeYw"], ["updated_at", "2014-10-29 21:37:50.214342"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 7ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:37:50 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 72ms (Views: 70.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:37:57 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Boss", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Boss' LIMIT 1
+Completed 200 OK in 76ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:38:03 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Boss", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Boss' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 76ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:38:03 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.3ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'A-gXuIFfxVWxW3CGICUeYw' LIMIT 1[0m
+Completed 200 OK in 66ms (Views: 64.3ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:38:07 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'A-gXuIFfxVWxW3CGICUeYw' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 9  [["session_token", "dm1SGY5tkRVS0co4-kjVoA"], ["updated_at", "2014-10-29 21:38:07.018844"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 6ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:38:07 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 82ms (Views: 81.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:38:09 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 76ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:38:09 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'BMJUJtUQ5QpU6TdAz-SE2g' LIMIT 1
+Completed 200 OK in 71ms (Views: 69.4ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:38:12 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'BMJUJtUQ5QpU6TdAz-SE2g' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4[0m  [["session_token", "AWDpe-wio2-CeDmkYyuQLw"], ["updated_at", "2014-10-29 21:38:12.186498"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 7ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:38:12 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 73ms (Views: 72.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:45:05 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 87ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:45:05 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 76ms (Views: 72.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:45:19 -0700
+Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:45:19 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 70ms (Views: 68.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:46:16 -0700
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:46:16 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 96ms (Views: 92.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:46:16 -0700
+Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:46:16 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.3ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 69ms (Views: 67.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:46:19 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 77ms (Views: 75.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:46:21 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 76ms (Views: 73.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:46:27 -0700
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:46:27 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.3ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 72ms (Views: 70.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:47:46 -0700
+Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:47:46 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.2ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 70ms (Views: 68.6ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:36 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:36 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.3ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 74ms (Views: 72.6ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:38 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:38 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 73ms (Views: 71.2ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:38 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:38 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 81ms (Views: 79.1ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:39 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:39 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 72ms (Views: 70.3ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:39 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:40 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.8ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 83ms (Views: 81.0ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:40 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:40 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 71ms (Views: 70.0ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:40 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:41 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.3ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 72ms (Views: 70.5ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:41 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:41 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 74ms (Views: 72.2ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:41 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:41 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 65ms (Views: 63.9ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:42 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:42 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 79ms (Views: 77.3ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:42 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:42 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 76ms (Views: 74.6ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:43 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:43 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 74ms (Views: 71.7ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:43 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:43 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 77ms (Views: 75.2ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:48:44 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:48:44 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 64ms (Views: 62.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:51:34 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.5ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.3ms)
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 90ms (Views: 87.5ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:51:35 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:51:35 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.3ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 73ms (Views: 71.5ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:51:36 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:51:36 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.5ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.4ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 77ms (Views: 75.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:53:13 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.6ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+Completed 200 OK in 85ms (Views: 78.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 14:55:02 -0700
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_loggedout rendered or redirected
+Completed 302 Found in 10ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:55:02 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1[0m
+Completed 200 OK in 89ms (Views: 85.5ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:57:37 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'AWDpe-wio2-CeDmkYyuQLw' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4  [["session_token", "zl_7ZBlzTF0aNmVGsuAK9Q"], ["updated_at", "2014-10-29 21:57:37.788562"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 6ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:57:37 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.5ms)
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 71ms (Views: 69.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:57:40 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 76ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:57:40 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.6ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'zl_7ZBlzTF0aNmVGsuAK9Q' LIMIT 1
+Completed 200 OK in 71ms (Views: 69.5ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:57:41 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'zl_7ZBlzTF0aNmVGsuAK9Q' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4[0m  [["session_token", "muE6WVmwUojCqB4nS913Lw"], ["updated_at", "2014-10-29 21:57:41.690798"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 6ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:57:41 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 74ms (Views: 73.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:57:43 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 81ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:57:43 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.3ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'muE6WVmwUojCqB4nS913Lw' LIMIT 1[0m
+Completed 200 OK in 72ms (Views: 70.7ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:57:45 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'muE6WVmwUojCqB4nS913Lw' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4  [["session_token", "O-ewmLRSyQ0AV-w6-ANEEA"], ["updated_at", "2014-10-29 21:57:45.046431"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 4ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:57:45 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 79ms (Views: 78.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 14:57:46 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 78ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 14:57:46 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.6ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.6ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'O-ewmLRSyQ0AV-w6-ANEEA' LIMIT 1
+Completed 200 OK in 78ms (Views: 76.6ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 14:57:48 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'O-ewmLRSyQ0AV-w6-ANEEA' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4[0m  [["session_token", "k3z6L14tzwJCP29kcnnMfg"], ["updated_at", "2014-10-29 21:57:48.864379"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 14:57:48 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 73ms (Views: 72.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 15:05:12 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Completed 422 Unprocessable Entity in 1ms
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  actionpack (4.1.6) lib/action_controller/metal/request_forgery_protection.rb:176:in `handle_unverified_request'
+  actionpack (4.1.6) lib/action_controller/metal/request_forgery_protection.rb:202:in `handle_unverified_request'
+  actionpack (4.1.6) lib/action_controller/metal/request_forgery_protection.rb:197:in `verify_authenticity_token'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:424:in `block in make_lambda'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:160:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:160:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:86:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.6) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.6) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.6) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.6) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.6ms)
+
+
+Started GET "/session/enw" for 127.0.0.1 at 2014-10-29 15:07:21 -0700
+
+ActionController::RoutingError (No route matches [GET] "/session/enw"):
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.8ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (34.8ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 15:07:26 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 89ms (Views: 78.6ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 15:08:13 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw=", "user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 76ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 15:08:13 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'k3z6L14tzwJCP29kcnnMfg' LIMIT 1[0m
+Completed 200 OK in 80ms (Views: 76.2ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 15:08:34 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'k3z6L14tzwJCP29kcnnMfg' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4  [["session_token", "95sgZQWOXeL7nI87faPWLw"], ["updated_at", "2014-10-29 22:08:34.746660"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 15:08:34 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 74ms (Views: 73.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 15:08:36 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw=", "user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 75ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 15:08:36 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.7ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.4ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = '95sgZQWOXeL7nI87faPWLw' LIMIT 1
+Completed 200 OK in 77ms (Views: 75.6ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 15:08:37 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = '95sgZQWOXeL7nI87faPWLw' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4[0m  [["session_token", "nw62YQ9fZO-gHaBBfmDQ0A"], ["updated_at", "2014-10-29 22:08:37.848449"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 15:08:37 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 76ms (Views: 75.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2014-10-29 15:08:39 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw=", "user"=>{"user_name"=>"Bobby", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."user_name" = 'Bobby' LIMIT 1[0m
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 76ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 15:08:39 -0700
+Processing by CatsController#index as HTML
+  [1m[35mCat Load (0.4ms)[0m  SELECT "cats".* FROM "cats"
+  Rendered cats/index.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'nw62YQ9fZO-gHaBBfmDQ0A' LIMIT 1[0m
+Completed 200 OK in 75ms (Views: 73.3ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2014-10-29 15:08:40 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'nw62YQ9fZO-gHaBBfmDQ0A' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = 4  [["session_token", "k4b7wbeO2_D8UzBxAis-Ig"], ["updated_at", "2014-10-29 22:08:40.683102"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-10-29 15:08:40 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 75ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-10-29 15:08:50 -0700
+Processing by UsersController#new as HTML
+  Rendered layouts/_errors.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 68ms (Views: 67.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-29 15:08:58 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"R9wN8uBv1RNVAj8X/SVM1cSr+x47xNe+rCm6LhS5wsw=", "user"=>{"user_name"=>"jimbo", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "password_digest", "session_token", "updated_at", "user_name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-10-29 22:08:58.404098"], ["password_digest", "$2a$10$Ro.W1x892ZZlxlIOzTFzzO/j./v7hXk5lAODPIAzuqZdobSraswra"], ["session_token", "kWrcKIdGa437o8pDYan5EQ"], ["updated_at", "2014-10-29 22:08:58.404098"], ["user_name", "jimbo"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 83ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2014-10-29 15:08:58 -0700
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1mSELECT "cats".* FROM "cats"[0m
+  Rendered cats/index.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'kWrcKIdGa437o8pDYan5EQ' LIMIT 1
+Completed 200 OK in 71ms (Views: 69.7ms | ActiveRecord: 0.9ms)
